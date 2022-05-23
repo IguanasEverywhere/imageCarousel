@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 500px;
+    height: 300px;
+}
+
+#carousel {
+    display: flex;
+    justify-content: center;
+}
+
+#picture-frame {
+    border: 1px solid black;
+    width: 500px;
+    height: 300px;
+}
+
+#pictures {
+    visibility: hidden;
+}
+
+#next-btn, #prev-btn {
+    background-color: gray;
+}
+
+#next-btn:hover, #prev-btn:hover {
+    background-color: brown;
+}
