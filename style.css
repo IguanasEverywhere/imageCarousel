@@ -24,9 +24,43 @@ img {
 }
 
 #next-btn, #prev-btn {
-    background-color: gray;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    cursor: pointer;
 }
 
 #next-btn:hover, #prev-btn:hover {
-    background-color: brown;
+    background-color: #80808045;
 }
+
+@keyframes slide-animation {
+    from {transform: scaleX(0);}
+    to {transform: scaleX(1.0);}
+}
+
+.animate-slide {
+    animation-name: slide-animation;
+    animation-duration: 0.5s;
+}
+
+.circle {
+    border-radius: 100%;
+    border: 2px solid black;
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#selection-circles {
+    display: flex;
+    width: 500px;
+    justify-content: center;
+}
+
+#selection-area {
+    display: flex;
+    justify-content: center;
+}
+
