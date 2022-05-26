@@ -1,29 +1,33 @@
+// Establish frame set up with first image displayed
+
 const pictureFrame = document.querySelector("#picture-frame");
 
 let slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
 pictureFrame.appendChild(slides[currentSlide]);
 
+// Next and Prev Buttons
+
 const nextBtn = document.querySelector("#next-btn");
 nextBtn.addEventListener('click', () => {
-    pictureFrame.removeChild(slides[currentSlide]);
+    clearPictureFrame();
     if (currentSlide < slides.length - 1) {
         currentSlide++;
     } else {
         currentSlide = 0;
     }
-    changeSlide(currentSlide);
+    changeSlide();
 });
 
 const prevBtn = document.querySelector("#prev-btn");
 prevBtn.addEventListener('click', () => {
-    pictureFrame.removeChild(slides[currentSlide]);
+    clearPictureFrame();
     if (currentSlide !== 0) {
         currentSlide--;
     } else {
         currentSlide = slides.length - 1;
     }
-    changeSlide(currentSlide);
+    changeSlide();
 });
 
 const changeSlide = () => {
@@ -52,14 +56,16 @@ let circles = document.querySelectorAll(".circle");
 circles[0].setAttribute("style", "background-color: red;");
 circles.forEach(circle => {
     circle.addEventListener('click', () => {
-        pictureFrame.removeChild(slides[currentSlide]);
+        clearPictureFrame();
         currentSlide = circlesArray.indexOf(circle);
-        changeSlide(currentSlide);
+        changeSlide();
     });
 });
 
+// automatically advance image every 5 seconds
+
 const advanceSlideTimer = () => {
-    pictureFrame.removeChild(slides[currentSlide]);
+    clearPictureFrame();
     if (currentSlide === slides.length - 1) {
         currentSlide = 0;
     } else {
@@ -71,4 +77,8 @@ const advanceSlideTimer = () => {
 
 setInterval(advanceSlideTimer, 5000);
 
+// used to remove current image in the frame before next image is appended
 
+const clearPictureFrame = () => {
+    pictureFrame.removeChild(slides[currentSlide]);
+}
